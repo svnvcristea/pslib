@@ -1,0 +1,23 @@
+{
+    "name": "sugarcrm/pslib",
+    "type": "library",
+    "description": "SugarCRM PSLib",
+    "license": "proprietary",
+    "authors": [
+        {
+          "name": "Nicolae V. CRISTEA",
+          "email": "ncristea@sugarcrm.com"
+        }
+    ],
+    "require": {
+        "symfony/console": "2.8.*",
+        "php": ">=5.4.0"
+    },
+    "autoload": {
+        "psr-4": { "Sugarcrm\\PSLib\\": "" },
+        "exclude-from-classmap": [
+          "/Tests/"
+        ]
+    },
+    "minimum-stability": "dev"
+}

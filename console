@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+
+/*
+ * This file is part of the SugarCRM\PSLib file package.
+ *
+ * Copyright (C) SugarCRM Inc. All rights reserved.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+set_time_limit(0);
+//set_include_path(get_include_path() . PATH_SEPARATOR . str_replace('custom', '', __DIR__));
+
+/** @var \Composer\Autoload\ClassLoader $loader */
+$loader = require __DIR__.'/vendor/autoload.php';
+$loader->register();
+
+use Sugarcrm\PSLib\Bootstrap;
+
+Bootstrap::commands();
