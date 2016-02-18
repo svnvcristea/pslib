@@ -12,7 +12,7 @@
 namespace Sugarcrm\PSLib\Console\Command;
 
 use Sugarcrm\PSLib\Entry;
-use Sugarcrm\PSLib\Boot;
+use Sugarcrm\PSLib\SugarKernel;
 use Sugarcrm\PSLib\Modules\Administration\Qrr;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -42,22 +42,18 @@ class QRRCommand extends Command
         $pBar->start();
         $showOutput = false;
 
-        $entry = new Entry('cli');
-        $entry->terminateUnAuthorizedSapi();
-        $pBar->advance();
-
         try {
-            Boot::entryPoint();
+            $sugarKernel = new SugarKernel('cli', 'dev', false);
+            $sugarKernel->boot();
         } catch (\Exception $e) {
             $output->writeln($e->getMessage());
         }
-        $pBar->advance();
+        $pBar->advance(2);
 
         /** @var \User $user */
-        $user = Boot::get('current_user');
+        $user = $sugarKernel->getG('current_user');
         $user->getSystemUser();
-        $mod_strings = Boot::modString();
-        $modules = $mod_strings['LBL_ALL_MODULES'];
+        $modules = $sugarKernel->getG('mod_strings');
         $pBar->advance();
 
         $qrr = new Qrr();
@@ -65,15 +61,10 @@ class QRRCommand extends Command
             $showOutput = true;
             $output->writeln('QRR output: ');
         }
-        $qrr->repairAndClearAll(['clearAll'], [$modules], true, $showOutput);
-        $pBar->advance(6);
+        $qrr->repairAndClearAll(['clearAll'], [$modules['LBL_ALL_MODULES']], true, $showOutput);
+        $pBar->advance(5);
 
-        Boot::cleanup();
-        /** @var \Database $db */
-        $db = Boot::get('db');
-        if ($db) {
-            $db->disconnect();
-        }
+        $sugarKernel->shutdown();
         $pBar->finish();
 
         $elapsed = time() - $pBar->getStartTime();

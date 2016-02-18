@@ -16,8 +16,9 @@ use Symfony\Component\Console\Application;
 
 class Bootstrap
 {
-    public static function commands()
+    public static function getCommandsApp()
     {
+        set_time_limit(0);
         $app = new Application('SugarCRM::PSLib', '7.6.3.0');
         $app->add(new Command\GreetCommand());
         $app->add(new Command\QRRCommand());
