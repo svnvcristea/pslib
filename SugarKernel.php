@@ -42,6 +42,7 @@ class SugarKernel
     const MINOR_VERSION = 6;
     const RELEASE_VERSION = 3;
     const EXTRA_VERSION = '';
+    const VENDOR_PACK_NAME = 'sugarcrm-ps/pslib';
 
     public function __construct($entryPoint, $environment, $debug)
     {
@@ -81,7 +82,7 @@ class SugarKernel
         $loader = $this->initLoader();
         $loader->register();
 
-        require_once 'vendor/sugarcrm/pslib/legacy_boot.php';
+        require_once $this->getRootDir().'vendor/'.self::VENDOR_PACK_NAME.'/legacy_boot.php';
 
         SugarAutoLoader::init();
         InputValidation::initService();
@@ -149,7 +150,7 @@ class SugarKernel
     {
         if (null === $this->rootDir) {
             $r = new \ReflectionObject($this);
-            $this->rootDir = str_replace('vendor/sugarcrm/pslib', '', dirname($r->getFileName()));
+            $this->rootDir = str_replace('/vendor/'.self::VENDOR_PACK_NAME, '', dirname($r->getFileName()));
         }
 
         return $this->rootDir;

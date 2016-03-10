@@ -1,5 +1,5 @@
 {
-    "name": "sugarcrm/pslib",
+    "name": "sugarcrm-ps/pslib",
     "type": "library",
     "description": "SugarCRM PSLib",
     "license": "proprietary",
@@ -20,5 +20,9 @@
           "/Tests/"
         ]
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "bin": ["bin/pslib"],
+    "config": {
+        "bin-dir": "bin"
+    }
 }

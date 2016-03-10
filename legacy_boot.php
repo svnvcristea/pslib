@@ -20,11 +20,12 @@ namespace {
     global $log;
     global $timedate;
     global $mod_strings;
+    global $rootDir;
 
-    require_once 'include/utils.php';
-    require_once 'include/SugarCache/SugarCache.php';
-    require_once 'include/SugarObjects/SugarConfig.php';
-    require_once 'config.php';
-    require_once 'include/modules.php';
-    require_once 'modules/Administration/language/en_us.lang.php';
+    require_once $rootDir.'/include/utils.php';
+    require_once $rootDir.'/include/SugarCache/SugarCache.php';
+    require_once $rootDir.'/include/SugarObjects/SugarConfig.php';
+    require_once $rootDir.'/config.php';
+    require_once $rootDir.'/include/modules.php';
+    require_once $rootDir.'/modules/Administration/language/en_us.lang.php';
 }
