@@ -82,10 +82,10 @@ class SugarKernel
         $loader = $this->initLoader();
         $loader->register();
 
-        require_once $this->getRootDir().'vendor/'.self::VENDOR_PACK_NAME.'/legacy_boot.php';
+        require_once $this->getRootDir().'/vendor/'.self::VENDOR_PACK_NAME.'/legacy_boot.php';
 
         SugarAutoLoader::init();
-        InputValidation::initService();
+//        InputValidation::initService();
 
         $this->container = new ContainerBuilder();
 //        $this->container->register('logger', 'LoggerManager::getLogger');

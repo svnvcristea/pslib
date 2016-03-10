@@ -11,6 +11,7 @@
  */
 
 $rootDir = str_replace('/vendor/sugarcrm-ps/pslib', '', preg_replace('/\/bin$/', '', __DIR__));
+set_include_path(get_include_path() . PATH_SEPARATOR . $rootDir);
 /** @var \Composer\Autoload\ClassLoader $loader */
 $loader = require $rootDir . '/vendor/autoload.php';
 $loader->register();

@@ -28,4 +28,9 @@ namespace {
     require_once $rootDir.'/config.php';
     require_once $rootDir.'/include/modules.php';
     require_once $rootDir.'/modules/Administration/language/en_us.lang.php';
+    require_once $rootDir.'/include/SugarLogger/LoggerManager.php';
+    require_once $rootDir.'/include/MVC/SugarApplication.php';
+    require_once $rootDir.'/include/TimeDate.php';
+    require_once $rootDir.'/include/database/DBManagerFactory.php';
+    require_once $rootDir.'/include/Localization/Localization.php';
 }
